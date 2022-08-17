@@ -3,13 +3,16 @@ import time
 import board
 import analogio
 
+MAXREAD = 65520  # this is max reading on ADC
+
 analogin = analogio.AnalogIn(board.A6)
 
 
-def getVoltage(pin):  # helper
-    return (pin.value * 3.3) / 65536
-
+def getValue(pin):  # helper
+    raw = pin.value
+    value = (raw * 255 / MAXREAD) # returns value between 0 and 255
+    return (value)
 
 while True:
-    print("Analog Voltage: %f" % getVoltage(analogin))
-    time.sleep(0.1)
+    print("Normalized value: %i" % getValue(analogin))
+    time.sleep(0.5)
