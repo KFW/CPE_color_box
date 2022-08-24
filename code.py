@@ -15,9 +15,9 @@ def getValues(rpin, gpin, bpin):  # helper
     r_raw = rpin.value
     g_raw = gpin.value
     b_raw = bpin.value
-    rval = int(r_raw * 255 / MAXREAD)  # returns value between 0 and 255
-    gval = int(g_raw * 255 / MAXREAD)  # returns value between 0 and 255
-    bval = int(b_raw * 255 / MAXREAD)  # returns value between 0 and 255
+    rval = r_raw * 255 // MAXREAD   # returns int value between 0 and 255
+    gval = g_raw * 255 // MAXREAD
+    bval = b_raw * 255 // MAXREAD 
     return (rval, gval, bval)
 
 while True:
